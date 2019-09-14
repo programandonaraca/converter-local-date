@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Progrmando na Raça | Spring com LocalDate e Converter</title>
+</head>
+
+<body>
+	
+	<div class="main">
+		<h1>Página de teste</h1>
+		
+		<div th:if="${pessoa != null}">
+			<h2>Informações passadas</h2>
+			<p>Nome: <span th:text="${pessoa.nome}"></span></p>
+			<p>Idade: <span th:text="${pessoa.idade}"></span></p>
+			<p>Data de nascimento: <span th:text="${#temporals.format(pessoa.nascimento, 'dd/MM/yyyy')}"></span></p>
+			<p>Data e Hora do nascimento: <span th:text="${#temporals.format(pessoa.dataHoraNascimento, 'dd/MM/yyyy HH:mm')}"></span></p>
+		</div>
+		
+		<form action="gravar-dados-pessoa" method="post">
+		
+			<label>Nome:</label>
+			<input type="text" name="nome" />
+			
+			<label>Idade:</label>
+			<input type="text" name="idade" />
+			
+			<label>Data de nascimento:</label>
+			<input type="date" name="nascimento" />
+			
+			<label>Data e hora do nascimento:</label>
+			<input type="datetime-local" name="dataHoraNascimento" />
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
+	
+</body>
+
+</html>
